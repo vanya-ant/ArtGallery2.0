@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ArtGallery.Server.Data.Models
+﻿namespace ArtGallery.Server.Data.Models
 {
-    class User
+    using Microsoft.AspNetCore.Identity;
+
+    public class User : IdentityUser
     {
     }
 }
