@@ -4,6 +4,10 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 2em;
+
+  @include bp (phone)  {
+    display: block;
+  }
 }
 
 footer div {
@@ -14,6 +18,11 @@ footer ul {
   display: flex;
   flex-direction: column;
   text-align: center;
+
+  @include bp (phone)  {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
 }
 
 footer  ul li {
@@ -32,4 +41,15 @@ footer h2 {
 }
 
 .footer-social {
+  @include bp (phone)  {
+    text-align: center;
+  }
+}
+
+.footer-social i {
+  margin: 0.3em;
+}
+
+.footer-social i:hover {
+  cursor: pointer;
 }
