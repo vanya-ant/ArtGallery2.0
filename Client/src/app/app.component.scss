@@ -1,3 +1,5 @@
+@import '../assets/scss/responsive';
+
 /*reset*/
 * {
   padding: 0;
@@ -12,6 +14,7 @@ body, html {
 :before, :after {
   box-sizing: inherit;
 }
+
 /*main*/
 .container {
   height: auto;

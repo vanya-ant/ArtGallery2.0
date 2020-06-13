@@ -6,16 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Artists\" />
-    <Folder Include="Core\Identity\Models\" />
-    <Folder Include="Core\Items\" />
-    <Folder Include="Core\Articles\" />
+    <Compile Remove="Core\**" />
+    <Compile Remove="Features\Comment\**" />
+    <EmbeddedResource Remove="Core\**" />
+    <EmbeddedResource Remove="Features\Comment\**" />
+    <None Remove="Core\**" />
+    <None Remove="Features\Comment\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Features\Article\Models\" />
     <Folder Include="Features\Artist\Models\" />
-    <Folder Include="Features\Comment\Models\" />
     <Folder Include="Features\Identity\Models\" />
     <Folder Include="Features\Item\Models\" />
+    <Folder Include="Features\Order\Models\" />
     <Folder Include="Infrastructure\Filters\" />
   </ItemGroup>
 

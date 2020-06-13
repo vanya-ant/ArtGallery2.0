@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-artist-create',
   templateUrl: './artist-create.component.html',
-  styleUrls: ['./artist-create.component.css']
+  styleUrls: ['./artist-create.component.scss']
 })
 export class ArtistCreateComponent implements OnInit {
 

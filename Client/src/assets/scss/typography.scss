@@ -1,0 +1,39 @@
+@import 'responsive';
+
+*{
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+
+  @include bp(phone) {
+    font-size: var(--font-size-phone);
+  }
+
+  @include bp(mobile) {
+    font-size: var(--font-size-tablet);
+  }
+
+  @include bp(tablet) {
+    font-size: var(--font-size-tablet);
+  }
+
+  @include bp(desktop) {
+    font-size: var(--font-size-desktop);
+  }
+
+  @include bp(large) {
+    font-size: var(--font-size-desktop);
+  }
+}
+
+blockquote {
+  font-style: italic;
+  padding-left: 0.5em;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: inherit;
+  text-decoration: none;
+
+  strong {
+    color: inherit;
+  }
+}

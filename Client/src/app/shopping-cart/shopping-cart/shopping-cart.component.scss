@@ -1,30 +1,19 @@
-.login-register {
+@import '../../../assets/scss/responsive';
+
+.shopping-cart {
   background: lightgray;
   width: 100%;
   height: 100%;
   padding: 1em;
+  margin: 0 auto;
 }
 
-.login-register-img {
-  width: 100%;
-}
-
-.login-register-img img {
-  width: 100%;
-  height: 10em;
-  object-fit: cover;
-  object-position: 100% 40%;
-  background: black;
-  opacity: 0.7;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.login h2 {
+.shopping-cart h2 {
   text-shadow: 0 0 0.2em darkgrey;
   padding-bottom: 0.5em;
 }
 
-.login form {
+.shopping-cart form {
   background: white;
   width: 50%;
   display: flex;
@@ -35,13 +24,20 @@
   margin: 1em auto;
 }
 
-.login label {
+.shopping-cart-table {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.shopping-cart label {
   padding-bottom: 1em;
   padding-top: 1em;
   text-align: left;
 }
 
-.login-register-button {
+.btn-primary {
   background: black;
   color: white;
   text-align: center;
@@ -52,8 +48,20 @@
   font: inherit;
 }
 
-.login input {
+.form input {
   width: 10em;
   height: 2em;
+  text-align: center;
+}
+
+.shopping-cart select {
+  font-family: inherit;
+}
+
+.shopping-cart-empty {
+  background: lightgray;
+  width: 100%;
+  padding: 1em;
+  margin: 0 auto;
   text-align: center;
 }

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-item-create',
   templateUrl: './item-create.component.html',
-  styleUrls: ['./item-create.component.css']
+  styleUrls: ['./item-create.component.scss']
 })
 export class ItemCreateComponent implements OnInit {
 

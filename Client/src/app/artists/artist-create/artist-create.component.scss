@@ -1,11 +1,13 @@
-.add-item {
+@import '../../../assets/scss/responsive';
+
+.add-artist {
   background: lightgray;
   width: 100%;
   height: 100%;
   padding: 1em;
 }
 
-.add-item form {
+.add-artist form {
   background: white;
   width: 50%;
   display: flex;
@@ -27,29 +29,15 @@
   font: inherit;
 }
 
-.add-item label {
+.add-artist label {
   padding-bottom: 1em;
   padding-top: 1em;
   text-align: left;
 }
 
-.add-item input {
+.add-artist input {
   width: 10em;
   height: 2em;
   text-align: center;
   font: inherit;
-}
-
-.add-item textarea {
-  text-align: center;
-  font: inherit;
-}
-
-.categories {
-  padding-bottom: 1em;
-}
-
-select {
-  font-family: inherit;
-  padding: 0.5em;
 }
