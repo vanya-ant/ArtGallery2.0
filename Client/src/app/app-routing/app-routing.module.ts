@@ -17,6 +17,7 @@ import {NotFoundComponent} from "../not-found/not-found.component";
 import {ArtistDetailsComponent} from "../artists/artist-details/artist-details.component";
 import {ArticlesAllComponent} from "../blog/articles-all/articles-all.component";
 import {ArticleDetailsComponent} from "../blog/article-details/article-details.component";
+import {ShoppingCartComponent} from '../shopping-cart/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
@@ -138,6 +139,16 @@ const routes: Routes = [
     data: {
       isLogged: true,
       isAdmin: true,
+    }
+  },
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent,
+    loadChildren: () => import('../shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: true,
+      isAdmin: false
     }
   },
   {
