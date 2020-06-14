@@ -1,6 +1,9 @@
 ﻿namespace ArtGallery.Server.Infrastructure.Extensions
 {
+    using ArtGallery.Server.Data;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
 
     public static class ApplicationBuilderExtensions
@@ -14,6 +17,15 @@
                     options.RoutePrefix = string.Empty;
                 });
             return null;
+        }
+
+        public static void ApplyMigrations(this IApplicationBuilder app)
+        {
+            using var services = app.ApplicationServices.CreateScope();
+
+            var dbContext = services.ServiceProvider.GetService<ArtGalleryDbContext>();
+
+            dbContext.Database.Migrate();
         }
     }
 }

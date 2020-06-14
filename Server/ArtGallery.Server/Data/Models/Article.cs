@@ -6,6 +6,11 @@
 
     public class Article
     {
+       public Article()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; }
 
         public string Author { get; set; }

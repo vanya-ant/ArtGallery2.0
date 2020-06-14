@@ -13,20 +13,6 @@ header {
   justify-content:space-between;
   align-items: center;
   width: 100%;
-
-  @include bp (mobile)  {
-
-  }
-
-  @include bp (tablet)  {
-    height: auto;
-    display: block;
-  }
-
-  @include bp (phone)  {
-    height: auto;
-    display: block;
-  }
 }
 
 input[type=checkbox] {
@@ -108,7 +94,11 @@ select {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 15em;
   height: 2em;
+  border-radius: 0;
+}
 
+.nav .search input:focus {
+  outline: none;
 }
 
 .logo img {

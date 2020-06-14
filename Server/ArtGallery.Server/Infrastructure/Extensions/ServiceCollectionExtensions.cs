@@ -3,9 +3,9 @@
     using ArtGallery.Server.Data;
     using ArtGallery.Server.Data.Models;
     using ArtGallery.Server.Features.Article;
-    using ArtGallery.Server.Features.Comment;
     using ArtGallery.Server.Features.Identity;
     using ArtGallery.Server.Features.Item;
+    using ArtGallery.Server.Features.Order;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -83,7 +83,7 @@
                            .AddTransient<IArtistService, ArtistService>()
                            .AddTransient<IItemService, ItemService>()
                            .AddTransient<IArticleService, ArticleService>()
-                           .AddTransient<ICommentService, CommentService>();
+                           .AddTransient<IOrderService, OrderService>();
         }
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
@@ -103,9 +103,9 @@
         public static void AddApiControllers(this IServiceCollection services)
         {
             services
-                           .AddControllers(options => options
-                               .Filters
-                               .Add<ModelOrNotFoundActionFilter>());
+                .AddControllers(options => options
+                .Filters
+                .Add<ModelOrNotFoundActionFilter>());
         }
     }
 }

@@ -1,21 +1,33 @@
-﻿namespace ArtGallery.Server.Data.Models
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace ArtGallery.Server.Data.Models
 {
     public class Item
     {
+        public Item()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; }
 
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public Artist Author { get; set; }
    
-        public string AutorId { get; set; }
+        public string AuthorId { get; set; }
     
         public string Category { get; set; }
 
         public string ImageUrl { get; set; }
 
+        [MaxLength(300)]
         public string Description { get; set; }
 
+        [Range(0, int.MaxValue)]
         public decimal Price { get; set; }
     }
 }

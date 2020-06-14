@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace ArtGallery.Server
+﻿namespace ArtGallery.Server
 {
+    using Infrastructure.Extensions;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -10,10 +14,35 @@ namespace ArtGallery.Server
    
         public void ConfigureServices(IServiceCollection services)
         {
-    
-                
+            services.AddDatabase(this.Configuration)
+               .AddIdentity()
+               .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
+               .AddApplicationServices()
+               .AddSwagger()
+               .AddApiControllers();
 
         }
-    
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseSwaggerUI()
+                .UseRouting()
+                .UseCors(options =>
+                options.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod())
+                .UseAuthentication()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                })
+                .ApplyMigrations();
+        }          
     }
 }
