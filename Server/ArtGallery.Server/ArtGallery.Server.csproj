@@ -15,11 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Article\Models\" />
-    <Folder Include="Features\Artist\Models\" />
-    <Folder Include="Features\Identity\Models\" />
-    <Folder Include="Features\Item\Models\" />
-    <Folder Include="Features\Order\Models\" />
     <Folder Include="Infrastructure\Filters\" />
   </ItemGroup>
 

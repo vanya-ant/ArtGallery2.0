@@ -17,11 +17,13 @@
 
     public static class ServiceCollectionExtensions
     {
-        public static AppSettings GetApplicationSettings(this IServiceCollection services, IConfiguration configuration)
+        public static AppSettings GetApplicationSettings(
+           this IServiceCollection services,
+           IConfiguration configuration)
         {
-            var appConfiguration = configuration.GetSection("ApplicationSettings");
-            services.Configure<AppSettings>(appConfiguration);
-            return appConfiguration.Get<AppSettings>();
+            var applicationSettingsConfiguration = configuration.GetSection("ApplicationSettings");
+            services.Configure<AppSettings>(applicationSettingsConfiguration);
+            return applicationSettingsConfiguration.Get<AppSettings>();
         }
 
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
