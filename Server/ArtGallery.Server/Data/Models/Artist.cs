@@ -20,7 +20,9 @@
         public string ImageUrl { get; set; }
 
         [Required]
-        public string Filed { get; set; }
+        public Category Category { get; set; }
+
+        public string CategoryID { get; set; }
 
         [Required]
         public string Name { get; set; }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthorizeService} from '../../shared/services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterService } from './register.service';
+import { Router } from '@angular/router';
+import { RegisterModel } from './register-model';
 
 @Component({
   selector: 'app-register',
@@ -11,26 +13,21 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private authService: AuthorizeService, private fb: FormBuilder) {}
+  constructor(private registerService: RegisterService,
+              private fb: FormBuilder,
+              private router: Router) {}
+
 
   ngOnInit() {
-  }
-
-  register() {
-    this.authService.register(this.form.value).subscribe(data => {
-      console.log(data);
+    this.form = this.fb.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required]
     });
   }
 
-  get username() {
-    return this.form.get('username');
-  }
-
-  get email() {
-    return this.form.get('email');
-  }
-
-  get password() {
-    return this.form.get('password');
+  login() {
+    this.registerService.register(this.form.value).subscribe(res => {
+      this.router.navigate(['auth']);
+    });
   }
 }

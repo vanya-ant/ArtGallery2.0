@@ -12,10 +12,10 @@ namespace ArtGallery.Server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Author = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: false),
+                    Content = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,18 +62,15 @@ namespace ArtGallery.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Attists",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Filed = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attists", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,27 +198,24 @@ namespace ArtGallery.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
+                name: "Attists",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: true),
-                    AuthorId = table.Column<string>(nullable: true),
-                    AutorId = table.Column<string>(nullable: true),
-                    Category = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(maxLength: 300, nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false)
+                    ImageUrl = table.Column<string>(nullable: false),
+                    CategoryID = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Items", x => x.Id);
+                    table.PrimaryKey("PK_Attists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Items_Attists_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Attists",
+                        name: "FK_Attists_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -245,7 +239,36 @@ namespace ArtGallery.Server.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    AuthorId = table.Column<string>(nullable: false),
+                    CategoryId = table.Column<string>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(maxLength: 300, nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Items_Attists_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "Attists",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Items_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -329,9 +352,19 @@ namespace ArtGallery.Server.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Attists_CategoryID",
+                table: "Attists",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Items_AuthorId",
                 table: "Items",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_CategoryId",
+                table: "Items",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_BuyerId",
@@ -384,6 +417,9 @@ namespace ArtGallery.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

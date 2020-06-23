@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthorizeService} from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,28 +12,26 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthorizeService, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['items-all']);
+    }
+  }
+
+  ngOnInit() {
+    localStorage.removeItem('token');
     this.form = this.fb.group({
       email: ['', Validators.required, Validators.email],
       password: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-  }
-
   login() {
-    this.authService.login(this.form.value).subscribe(data => {
-      this.authService.saveToken(data.token);
-      this.router.navigate(['items-all']);
+    this.loginService.login(this.form.value).subscribe(res => {
+      this.loginService.setTToken(res.token);
+      this.loginService.setId(res.dealerId);
+      window.location.reload();
+      this.router.navigate(['cars']);
     });
-  }
-
-  get username() {
-    return this.form.get('username');
-  }
-
-  get password() {
-    return this.form.get('password');
   }
 }

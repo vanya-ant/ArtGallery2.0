@@ -17,16 +17,22 @@ namespace ArtGallery.Server.Data.Models
         public string Name { get; set; }
 
         public Artist Author { get; set; }
-   
-        public string AuthorId { get; set; }
-    
-        public string Category { get; set; }
 
+        [Required]
+        public string AuthorId { get; set; }
+
+        public Category Category { get; set; }
+
+        [Required]
+        public string CategoryId {get; set;}
+
+        [Required]
         public string ImageUrl { get; set; }
 
         [MaxLength(300)]
         public string Description { get; set; }
 
+        [Required]
         [Range(0, int.MaxValue)]
         public decimal Price { get; set; }
     }

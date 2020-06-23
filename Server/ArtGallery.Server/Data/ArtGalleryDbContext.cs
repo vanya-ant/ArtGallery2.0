@@ -19,6 +19,8 @@
 
         public DbSet<ArtistItems> ArtistItems {get; set;}
 
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Artist>()
@@ -26,7 +28,8 @@
 
             builder.Entity<Artist>()
                 .HasMany(a => a.Items)
-                .WithOne(a => a.Artist);
+                .WithOne(a => a.Artist)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ArtistItems>()
                 .HasKey(ai => new { ai.ArtistId, ai.ItemId });
@@ -44,6 +47,7 @@
 
             builder.Entity<Order>()
                 .HasOne(o => o.Buyer);
+
             builder.Entity<Order>()
                 .HasMany(o => o.Items);
 
@@ -55,14 +59,32 @@
 
             builder.Entity<UserOrders>()
                 .HasOne(uo => uo.User)
-                .WithMany(u => u.Orders);
+                .WithMany(u => u.Orders)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Item>()
                 .HasKey(i => i.Id);
 
             builder.Entity<Item>()
+                .HasOne(i => i.Category)
+                .WithMany(c => c.Items)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Item>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,4)");
+
+            builder.Entity<Category>()
+                .HasKey(c => c.Id);
+
+            builder.Entity<Category>()
+                .HasMany(c => c.Items)
+                .WithOne(i => i.Category)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Category>()
+               .HasMany(c => c.Artists)
+               .WithOne(i => i.Category);
 
             base.OnModelCreating(builder);
         }
