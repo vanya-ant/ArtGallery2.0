@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ArtGallery.Orders.Data
+﻿namespace ArtGallery.Orders.Data
 {
-    class OrdersDbContext
+    using Microsoft.EntityFrameworkCore;
+
+    public class OrdersDbContext : DbContext
     {
     }
 }

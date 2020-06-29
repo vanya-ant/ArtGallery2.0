@@ -1,12 +1,20 @@
-﻿using System;
-
-namespace ArtGallery.Orders
+﻿namespace ArtGallery.Orders
 {
-    class Program
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Hosting;
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(wb => wb.UseStartup<Startup>());
         }
     }
 }

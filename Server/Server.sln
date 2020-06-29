@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Identity", "ArtG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Common", "ArtGallery.Common\ArtGallery.Common.csproj", "{CCD68563-C8A8-4B0A-90E7-89A3482E6E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery.Items", "ArtGallery.Items\ArtGallery.Items.csproj", "{6BA5AFD5-B39F-442D-9334-7FD356BC0002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Items", "ArtGallery.Items\ArtGallery.Items.csproj", "{6BA5AFD5-B39F-442D-9334-7FD356BC0002}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery.Blog", "ArtGallery.Blog\ArtGallery.Blog.csproj", "{FDD8759A-3C74-42ED-AA39-7D272BA890D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Blog", "ArtGallery.Blog\ArtGallery.Blog.csproj", "{FDD8759A-3C74-42ED-AA39-7D272BA890D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery.Orders", "ArtGallery.Orders\ArtGallery.Orders.csproj", "{3D480DAE-38DF-4BC8-826C-5E994B4D1FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Orders", "ArtGallery.Orders\ArtGallery.Orders.csproj", "{3D480DAE-38DF-4BC8-826C-5E994B4D1FC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery.Statistics", "ArtGallery2.0.Statistics\ArtGallery.Statistics.csproj", "{F086FF5A-4E96-4433-AEFE-D315E1A0E3CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3D480DAE-38DF-4BC8-826C-5E994B4D1FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D480DAE-38DF-4BC8-826C-5E994B4D1FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D480DAE-38DF-4BC8-826C-5E994B4D1FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F086FF5A-4E96-4433-AEFE-D315E1A0E3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F086FF5A-4E96-4433-AEFE-D315E1A0E3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F086FF5A-4E96-4433-AEFE-D315E1A0E3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F086FF5A-4E96-4433-AEFE-D315E1A0E3CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4200/'
+  identityApiUrl: 'https://localhost:5003/',
+  itemsApiUrl: 'https://localhost:5001',
+  blogApiUrl: 'https://localhost:5002',
+  ordersApiUrl: 'https://localhost:5004',
+  statisticsApiUrl: 'https://localhost:5005'
 };
 
 /*
