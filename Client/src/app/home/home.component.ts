@@ -10,9 +10,6 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   customOptions: OwlOptions  = {
     loop: true,
     items: 1,
@@ -20,7 +17,10 @@ export class HomeComponent implements OnInit {
     smartSpeed: 1500,
     nav: false,
     dots: false,
-    autoplayHoverPause:true,
+    autoplayHoverPause: true,
+  };
+
+  ngOnInit(): void {
   }
 
 }

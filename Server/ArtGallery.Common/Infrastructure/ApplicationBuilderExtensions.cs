@@ -1,13 +1,10 @@
 ﻿namespace ArtGallery.Common.Infrastructure
 {
-    using ArtGallery.Server.Data.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public static class ApplicationBuilderExtensions
     {

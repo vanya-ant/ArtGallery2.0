@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  loginPath: string = environment.apiUrl + 'identity/login';
+  loginPath: string = environment.identityApiUrl + 'identity/login';
 
   constructor(private http: HttpClient) { }
 

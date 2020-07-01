@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.loginService.setTToken(res.token);
       this.loginService.setId(res.dealerId);
       window.location.reload();
-      this.router.navigate(['cars']);
+      this.router.navigate(['items']);
     });
   }
 }

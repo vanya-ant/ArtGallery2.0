@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class ItemsService {
   item: IItem;
-  itemssPath: string = environment.apiUrl + 'items/';
+  itemssPath: string = environment.itemsApiUrl + 'items/';
   itemssPathWithoutSlash  = this.itemssPath.slice(0, -1);
 
   constructor(

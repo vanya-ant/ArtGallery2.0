@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  registerPath: string = environment.apiUrl + 'identity/register';
+  registerPath: string = environment.identityApiUrl + 'identity/register';
   constructor(private http: HttpClient) { }
 
   register(payload): Observable<any> {
