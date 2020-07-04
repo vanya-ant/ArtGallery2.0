@@ -1,6 +1,9 @@
 ﻿namespace ArtGallery.Items.Models
 {
+    using ArtGallery.Items.Data;
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Item
@@ -12,7 +15,6 @@
 
         public string Id { get; set; }
 
-        [MaxLength(100)]
         public string Name { get; set; }
 
         public Artist Author { get; set; }
@@ -26,6 +28,7 @@
         public string CategoryId { get; set; }
 
         [Required]
+        [RegularExpression(DataConstants.Item.ImageUrlRegularExpression)]
         public string ImageUrl { get; set; }
 
         [MaxLength(300)]

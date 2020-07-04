@@ -9,15 +9,17 @@
         public Order()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Items = new HashSet<ArtistItems>();
+            this.Items = new HashSet<OrderItem>();
         }
 
         [Key]
         public string Id { get; set; }
 
         [Required]
-        public ICollection<ArtistItems> Items { get; set; }
+        public ICollection<OrderItem> Items { get; set; }
 
         public ArtGalleryUser Buyer { get; set; }
+
+        public string BuyerId { get; set; }
     }
 }

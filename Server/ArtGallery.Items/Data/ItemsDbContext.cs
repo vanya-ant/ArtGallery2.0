@@ -14,8 +14,6 @@
 
         public DbSet<Item> Items { get; set; }
 
-        public DbSet<ArtistItems> ArtistItems { get; set; }
-
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Artist> Artists { get; set; }

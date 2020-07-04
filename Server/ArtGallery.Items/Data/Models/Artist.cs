@@ -9,7 +9,7 @@
         public Artist()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Items = new HashSet<ArtistItems>();
+            this.Items = new HashSet<Item>();
         }
 
         [Key]
@@ -21,7 +21,7 @@
         [Required]
         public Category Category { get; set; }
 
-        public string CategoryID { get; set; }
+        public string CategoryId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -29,6 +29,6 @@
         [Required]
         public string Email { get; set; }
 
-        public ICollection<ArtistItems> Items { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }

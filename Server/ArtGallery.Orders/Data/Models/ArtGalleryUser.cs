@@ -1,20 +1,15 @@
 ﻿namespace ArtGallery.Orders.Data.Models
 {
+    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
 
-    public class ArtGalleryUser
+    public class ArtGalleryUser : IdentityUser
     {
         public ArtGalleryUser()
         {
-            this.Orders = new HashSet<UserOrders>();
+            this.Orders = new HashSet<Order>();
         }
 
-        public string Id { get; set; }
-
-        public string Email { get; set; }
-
-        public string UserId { get; set; }
-
-        public ICollection<UserOrders> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

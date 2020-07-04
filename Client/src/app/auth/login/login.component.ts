@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
     if (localStorage.getItem('token')) {
       this.router.navigate(['items-all']);
     }
@@ -27,11 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.form.value).subscribe(res => {
-      this.loginService.setTToken(res.token);
-      this.loginService.setId(res.dealerId);
-      window.location.reload();
-      this.router.navigate(['items']);
-    });
+   this.auth.login(this.form.value)
+     .subscribe(result => {
+       this.auth.setToken(result.token);
+       this.auth.setId(result);
+     });
   }
 }

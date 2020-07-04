@@ -9,8 +9,8 @@
     public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseWebService(
-      this IApplicationBuilder app,
-      IWebHostEnvironment env)
+                this IApplicationBuilder app,
+                 IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

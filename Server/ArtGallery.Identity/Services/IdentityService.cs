@@ -29,6 +29,7 @@ namespace ArtGallery.Identity
             var currentUser = new User
             {
                 Email = model.Email,
+                UserName = model.Email,
             };
 
             var identityResult = await this.userManager.CreateAsync(currentUser, model.Password);

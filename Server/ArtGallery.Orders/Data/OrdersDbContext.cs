@@ -1,5 +1,6 @@
 ﻿namespace ArtGallery.Orders.Data
 {
+    using ArtGallery.Items.Data.Models;
     using ArtGallery.Orders.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using System.Reflection;
@@ -13,7 +14,9 @@
 
         public DbSet<Order> Orders { get; set; }
 
-        public DbSet<ArtistItems> Items { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<UserShoppingCart> ShoppingCarts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
