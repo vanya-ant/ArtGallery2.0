@@ -32,5 +32,9 @@ export class RegisterComponent implements OnInit {
       this.auth.login(this.form.value).subscribe(result => {
         this.auth.setId(result);
       });
+
+      this.router.navigate(['items']).then(() => {
+      window.location.reload();
+      });
   }
 }

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthenticationService {
   registerPath: string = environment.identityApiUrl + 'identity/register';
   loginPath: string = environment.identityApiUrl + 'identity/login';
+  dealerIdPath: string = environment.identityApiUrl + 'identity/id';
   itemsPath: string = environment.itemsApiUrl + 'items';
   itemDetailsPath: string = environment.itemsApiUrl + 'items/id';
   artistsPath: string = environment.itemsApiUrl + 'artists';
@@ -24,8 +25,8 @@ export class AuthenticationService {
     return this.http.post(this.loginPath, data);
   }
 
-  getUserId(): string {
-    return localStorage.getItem('userId');
+  getUserId(): Observable<any> {
+    return this.http.get(this.dealerIdPath);
   }
 
   setToken(token) {
@@ -34,5 +35,13 @@ export class AuthenticationService {
 
   setId(userId) {
     localStorage.setItem('userId', userId);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  isAuthenticated() {
+    return !!this.getToken();
   }
 }

@@ -39,12 +39,15 @@
         <li>
           <a href="/blog/articles-all">Blog</a>
         </li>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li>
-          <a href="/register">Register</a>
-        </li>
+          <li *ngIf="!token">
+            <a href="/login">Login</a>
+          </li>
+          <li *ngIf="!token">
+            <a href="/register">Register</a>
+          </li>
+          <li *ngIf="token">
+            <a (click)="logout()">Logout</a>
+          </li>
         <li>
           <div class="lang">
             <label for="language"></label>
