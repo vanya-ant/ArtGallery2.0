@@ -1,8 +1,11 @@
 ﻿namespace ArtGallery.Identity.Infrastructure
 {
+    using ArtGallery.Common;
     using ArtGallery.Identity.Data;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public static class ServiceCollectionExtensions
     {
@@ -20,6 +23,6 @@
                 .AddEntityFrameworkStores<IdentityDbContext>();
 
             return services;
-        }
+        }    
     }
 }

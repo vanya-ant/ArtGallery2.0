@@ -9,43 +9,43 @@ import {Observable} from 'rxjs';
 })
 export class ItemsService {
   item: IItem;
-  itemssPath: string = environment.itemsApiUrl + 'items/';
-  itemssPathWithoutSlash  = this.itemssPath.slice(0, -1);
+  itemsPath: string = environment.itemsApiUrl + 'items/';
+  itemsPathWithoutSlash  = this.itemsPath.slice(0, -1);
 
   constructor(
     private http: HttpClient
   ) { }
 
   getItems(): Observable<Array<IItem>> {
-    return this.http.get<Array<IItem>>(this.itemssPath);
+    return this.http.get<Array<IItem>>(this.itemsPath);
   }
 
   getItem(id: string): Observable<IItem> {
-    return this.http.get<IItem>(this.itemssPath + id);
+    return this.http.get<IItem>(this.itemsPath + id);
   }
 
   createItem(item: IItem): Observable<IItem> {
-    return this.http.post<IItem>(this.itemssPath, item);
+    return this.http.post<IItem>(this.itemsPath, item);
   }
 
   editItem(id: string, item: IItem): Observable<IItem> {
-    return this.http.put<IItem>(this.itemssPath + id, item);
+    return this.http.put<IItem>(this.itemsPath + id, item);
   }
 
   deleteItem(id: string) {
-    return this.http.delete(this.itemssPath + id);
+    return this.http.delete(this.itemsPath + id);
   }
 
   search(queryString): Observable<Array<IItem>> {
 
-    return this.http.get<Array<IItem>>(this.itemssPathWithoutSlash + queryString);
+    return this.http.get<Array<IItem>>(this.itemsPathWithoutSlash + queryString);
   }
 
   sort(queryString): Observable<Array<IItem>> {
-    return this.http.get<Array<IItem>>(this.itemssPathWithoutSlash + queryString);
+    return this.http.get<Array<IItem>>(this.itemsPathWithoutSlash + queryString);
   }
 
   changeAvailability(id): Observable<boolean> {
-    return this.http.put<boolean>(this.itemssPath + id + '/ChangeAvailability', {});
+    return this.http.put<boolean>(this.itemsPath + id + '/ChangeAvailability', {});
   }
 }

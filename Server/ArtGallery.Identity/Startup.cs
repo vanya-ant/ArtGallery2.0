@@ -1,6 +1,7 @@
 ﻿namespace ArtGallery.Identity
 {
     using ArtGallery.Common.Infrastructure;
+    using ArtGallery.Common.Middlewares;
     using ArtGallery.Identity.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,7 @@
         {
             app
                 .UseWebService(env)
+                .UseSetAdminMiddleware()
                 .Initialize();
         }
     }

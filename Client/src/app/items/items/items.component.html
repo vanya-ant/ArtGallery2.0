@@ -1,17 +1,18 @@
 <div class="container">
   <div class="wrapper">
     <div class="gallery">
-      <div *ngIf="items && items.length != 0; else 'noCars'">
-        <div class="gallery-item">
-          <h2>Abstract Art</h2>
-          <h4>Author: Elia McNamara</h4>
-          <img src="./assets/img/steve-johnson-3Sf_G9m0gcQ-unsplash.jpg">
+      <div *ngIf="items && items.length != 0">
+        <div *ngFor="let item of items" class="gallery-item">
+          <h2>{{item.category}}</h2>
+          <h4>Author: {{item.artist}}</h4>
+          <img src="{{item.imageUrl">
           <div class="order-item">
-            <p>Price: $850.oo</p>
+            <p>Price: ${{item.price.toFixed(2)}}</p>
             <button class="add-to-cart">Add to cart</button>
           </div>
         </div>
       </div>
+      <h2>Currently no art items to display!</h2>
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthenticationService {
   registerPath: string = environment.identityApiUrl + 'identity/register';
   loginPath: string = environment.identityApiUrl + 'identity/login';
-  dealerIdPath: string = environment.identityApiUrl + 'identity/id';
+  userIdPath: string = environment.identityApiUrl + 'identity/id';
   itemsPath: string = environment.itemsApiUrl + 'items';
   itemDetailsPath: string = environment.itemsApiUrl + 'items/id';
   artistsPath: string = environment.itemsApiUrl + 'artists';
@@ -26,7 +26,7 @@ export class AuthenticationService {
   }
 
   getUserId(): Observable<any> {
-    return this.http.get(this.dealerIdPath);
+    return this.http.get(this.userIdPath);
   }
 
   setToken(token) {
