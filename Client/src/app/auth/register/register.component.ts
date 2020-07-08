@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  login() {
+  register() {
       this.auth.register(this.form.value).subscribe(result => {
         this.auth.setToken(result.token);
       });

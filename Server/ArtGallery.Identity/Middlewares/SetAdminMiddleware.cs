@@ -1,6 +1,8 @@
 ﻿namespace ArtGallery.Identity.Middlewares
 {
     using ArtGallery.Common;
+    using ArtGallery.Identity.Data;
+    using ArtGallery.Identity.Data.Models;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using System.Linq;
@@ -17,24 +19,24 @@
 
         public async Task InvokeAsync(
             HttpContext context,
-            UserManager<IdentityUser> userManager,
-            RoleManager<ApplicationRole> roleManager)
+            UserManager<User> userManager,
+            RoleManager<Role> roleManager)
         {
             await SeedUserInRoles(userManager, roleManager);
             await this.next(context);
         }
 
-        private static async Task SeedUserInRoles(UserManager<IdentityUser> userManager, RoleManager<ApplicationRole> roleManager)
+        private static async Task SeedUserInRoles(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
             if (!userManager.Users.Any())
             {
-                var user = new IdentityUser
+                var user = new User
                 {
                     UserName = Constants.AdministratorEmail,
                     Email = Constants.AdministratorEmail,
                 };
 
-                var role = new ApplicationRole
+                var role = new Role
                 {
                     Name = Constants.AdministratorRoleName
                 };
