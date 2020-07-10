@@ -1,12 +1,8 @@
-﻿using ArtGallery.Common.Infrastructure;
-using ArtGallery.Common.Servcies;
+﻿using ArtGallery.Common.Servcies;
 using ArtGallery.Identity.Data;
 using ArtGallery.Identity.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ArtGallery.Identity
@@ -19,13 +15,10 @@ namespace ArtGallery.Identity
 
         private readonly IJwtTokenGeneratorService jwtTokenGenerator;
 
-        private readonly RoleManager<IdentityRole> roleManager;
-
-        public IdentityService(UserManager<User> userManager, IJwtTokenGeneratorService jwtTokenGenerator, RoleManager<IdentityRole> roleManager)
+        public IdentityService(UserManager<User> userManager, IJwtTokenGeneratorService jwtTokenGenerator)
         {
             this.jwtTokenGenerator = jwtTokenGenerator;
             this.userManager = userManager;
-            this.roleManager = roleManager;
         }
 
         public async Task<Result<User>> Register(UserInputModel model)
@@ -63,7 +56,9 @@ namespace ArtGallery.Identity
                 return ErrorMessage;
             }
 
-            var token = this.jwtTokenGenerator.GenerateToken(currentUser);
+            var roles = await this.userManager.GetRolesAsync(currentUser);
+
+            var token = this.jwtTokenGenerator.GenerateToken(currentUser, roles);
 
             return new UserOutputModel(token);
         }

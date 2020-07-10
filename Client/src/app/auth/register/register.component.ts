@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit {
         this.auth.setId(result);
       });
 
-      this.router.navigate(['items']).then(() => {
-      window.location.reload();
+      this.router.navigate(['/']).then(() => {
+     /* window.location.reload();*/
       });
   }
 }

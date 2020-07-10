@@ -8,20 +8,9 @@
           <h2>Register</h2>
           <label for="email">Email address</label>
           <input id="email" formControlName="email" type="email" placeholder="Enter email...">
-  <!--        <div *ngIf="form.get('username').invalid && form.get('username').touched">
-            <p class="toast-error">Email not valid!</p>
-          </div>-->
           <label for="password">Password</label>
           <input id="password" formControlName="password" type="password" placeholder="Enter password...">
-     <!--     <div *ngIf="form.controls['passwords'].value['password'].length < 6 && form.controls['passwords'].value['password'].touched">
-            <p class="toast-error">Password must be at least 6 characters long!</p>
-          </div>-->
-<!--          <label for="passwordConfirm">Repeat password</label>
-          <input id="passwordConfirm" formControlName="passwordConfirm" type="password" placeholder="Repeat password...">
-          <div *ngIf="passwordConfirm.dirty && !passwordDoesMatch">
-            <p class="toast-error">Passwords dont' match!</p>
-          </div>-->
-          <button class="login-register-button" onclick="">Register</button>
+          <button type="submit" class="login-register-button" [disabled]="form.invalid">Register</button>
         </form>
       </div>
     </div>

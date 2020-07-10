@@ -8,15 +8,9 @@
           <h2>Login</h2>
           <label for="email">Email address</label>
           <input formControlName="email" id="email" type="email" placeholder="Enter email...">
-    <!--      <div *ngIf="form.get('username').invalid && form.get('username').touched">
-            <p class="toast-error">Email not valid!</p>
-          </div>-->
           <label for="password">Password</label>
           <input id="password" formControlName="password" type="password" placeholder="Enter password...">
-<!--          <div *ngIf="form.controls['passwords'].value['password'].length < 6 && form.controls['passwords'].value['password'].touched">
-            <p class="toast-error">Password must be at least 6 characters long!</p>
-          </div>-->
-          <button class="login-register-button" onclick="">Login</button>
+          <button type="submit" class="login-register-button"  [disabled]="form.invalid">Login</button>
         </form>
       </div>
     </div>

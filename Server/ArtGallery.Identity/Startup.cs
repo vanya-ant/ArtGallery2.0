@@ -1,7 +1,8 @@
 ﻿namespace ArtGallery.Identity
 {
     using ArtGallery.Common.Infrastructure;
-    using ArtGallery.Common.Middlewares;
+    using ArtGallery.Common.Servcies;
+    using ArtGallery.Identity.Data;
     using ArtGallery.Identity.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -18,6 +19,7 @@
             services
                 .AddWebService<IdentityDbContext>(this.Configuration)
                 .AddUserStorage()
+                .AddTransient<IDataSeeder, IdentityDataSeeder>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
         }
@@ -26,7 +28,6 @@
         {
             app
                 .UseWebService(env)
-                .UseSetAdminMiddleware()
                 .Initialize();
         }
     }

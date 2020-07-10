@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  registerPath: string = environment.identityApiUrl + 'identity/register';
+  registerPath: string =  environment.identityApiUrl + 'identity/register';
   loginPath: string = environment.identityApiUrl + 'identity/login';
   userIdPath: string = environment.identityApiUrl + 'identity/id';
   itemsPath: string = environment.itemsApiUrl + 'items';

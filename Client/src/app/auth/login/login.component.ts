@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     localStorage.removeItem('token');
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.router.navigate(['items']).then(() => {
-      window.location.reload();
+      /*window.location.reload();*/
     });
   }
 }

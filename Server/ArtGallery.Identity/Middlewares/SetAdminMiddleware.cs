@@ -2,7 +2,6 @@
 {
     using ArtGallery.Common;
     using ArtGallery.Identity.Data;
-    using ArtGallery.Identity.Data.Models;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using System.Linq;
@@ -20,13 +19,13 @@
         public async Task InvokeAsync(
             HttpContext context,
             UserManager<User> userManager,
-            RoleManager<Role> roleManager)
+            RoleManager<IdentityRole> roleManager)
         {
             await SeedUserInRoles(userManager, roleManager);
             await this.next(context);
         }
 
-        private static async Task SeedUserInRoles(UserManager<User> userManager, RoleManager<Role> roleManager)
+        private static async Task SeedUserInRoles(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (!userManager.Users.Any())
             {
@@ -36,7 +35,7 @@
                     Email = Constants.AdministratorEmail,
                 };
 
-                var role = new Role
+                var role = new IdentityRole
                 {
                     Name = Constants.AdministratorRoleName
                 };

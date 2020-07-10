@@ -1,5 +1,6 @@
 ﻿namespace ArtGallery.Common.Infrastructure
 {
+    using ArtGallery.Common.Servcies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,13 @@
             var db = serviceProvider.GetRequiredService<DbContext>();
 
             db.Database.Migrate();
+
+            var seeders = serviceProvider.GetServices<IDataSeeder>();
+
+            foreach (var seeder in seeders)
+            {
+                seeder.SeedData();
+            }
 
             return app;
         }
