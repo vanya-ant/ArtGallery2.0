@@ -24,8 +24,7 @@
                 return;
             }
 
-            Task
-                .Run(async () =>
+            Task.Run(async () =>
                 {
                     IdentityRole adminRole = new IdentityRole(Constants.AdministratorRoleName);
 

@@ -51,6 +51,7 @@ namespace ArtGallery.Identity
             }
 
             var validPassword = await this.userManager.CheckPasswordAsync(currentUser, model.Password);
+            
             if (!validPassword)
             {
                 return ErrorMessage;

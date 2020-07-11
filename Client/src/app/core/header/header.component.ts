@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   token: string;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -16,11 +17,6 @@ export class HeaderComponent implements OnInit {
 
   getToken() {
     this.token = localStorage.getItem('token');
-  }
-
-  route(param) {
-    console.log(param);
-    this.router.navigate([param]);
   }
 
   logout() {

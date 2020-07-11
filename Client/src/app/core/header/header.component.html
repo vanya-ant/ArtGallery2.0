@@ -46,6 +46,12 @@
             <a href="/register">Register</a>
           </li>
           <li *ngIf="token">
+          <a href="/item-create">Create item</a>
+          </li>
+          <li *ngIf="token">
+            <a href="/artist-create">Create artist</a>
+          </li>
+          <li *ngIf="token">
             <a (click)="logout()">Logout</a>
           </li>
         <li>

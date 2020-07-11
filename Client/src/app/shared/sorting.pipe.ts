@@ -6,9 +6,9 @@ import { IItem } from '../shared/item';
 })
 export class SortingPipe implements PipeTransform {
 
-  transform(products: IItem[], category = ''): any {
+  transform(items: IItem[], category = ''): any {
 
-    return products.filter(item => item.category === category);
+    return items.filter(item => item.category === category);
   }
 
 }

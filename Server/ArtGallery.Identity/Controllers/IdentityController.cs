@@ -5,6 +5,7 @@
     using ArtGallery.Identity.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class IdentityController : ApiController

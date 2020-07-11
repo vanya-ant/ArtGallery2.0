@@ -27,16 +27,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.form.value).subscribe(result => {
-      this.auth.setToken(result.token);
-    });
+    this.auth.login(this.form.value).subscribe(res => {
+      this.auth.setToken(res.token);
 
-    this.auth.getUserId().subscribe(result => {
-      this.auth.setId(result);
-    });
+      this.auth.getUserId().subscribe(result => {
+        this.auth.setId(result);
 
-    this.router.navigate(['items']).then(() => {
-      /*window.location.reload();*/
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
+      });
     });
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {executeBrowserBuilder} from '@angular-devkit/build-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AuthenticationService {
   registerPath: string =  environment.identityApiUrl + 'identity/register';
   loginPath: string = environment.identityApiUrl + 'identity/login';
-  userIdPath: string = environment.identityApiUrl + 'identity/id';
+  userIdPath: string = environment.identityApiUrl + 'users/id';
   itemsPath: string = environment.itemsApiUrl + 'items';
   itemDetailsPath: string = environment.itemsApiUrl + 'items/id';
   artistsPath: string = environment.itemsApiUrl + 'artists';
@@ -39,9 +40,5 @@ export class AuthenticationService {
 
   getToken() {
     return localStorage.getItem('token');
-  }
-
-  isAuthenticated() {
-    return !!this.getToken();
   }
 }

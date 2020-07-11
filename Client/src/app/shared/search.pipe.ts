@@ -6,10 +6,10 @@ import {IItem} from './item';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(products: IItem[], itemName = ''): any {
+  transform(items: IItem[], itemName = ''): any {
     if (!itemName.trim()) {
-      return products;
+      return items;
     }
-    return products.filter(item => item.name.toLowerCase().includes(itemName.toLowerCase()));
+    return items.filter(item => item.name.toLowerCase().includes(itemName.toLowerCase()));
   }
 }

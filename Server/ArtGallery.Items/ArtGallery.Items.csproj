@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ArtGallery.Common\ArtGallery.Common.csproj" />
+    <ProjectReference Include="..\ArtGallery.Identity\ArtGallery.Identity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
