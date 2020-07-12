@@ -1,4 +1,4 @@
-﻿namespace ArtGallery.Items.Models
+﻿namespace ArtGallery.Items.Data.Models
 {
     using System;
     using System.Collections.Generic;

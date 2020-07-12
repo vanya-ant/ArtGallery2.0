@@ -1,7 +1,7 @@
 ﻿using ArtGallery.Common.Infrastructure;
 using ArtGallery.Statistics.Data;
-using ArtGallery.Statistics.Services.Artists;
-using ArtGallery.Statistics.Services.Items;
+using ArtGallery.Statistics.Services.ItemsViews;
+using ArtGallery.Statistics.Services.Statistics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,8 +22,8 @@ namespace ArtGallery.Statistics
         {
             services
                 .AddWebService<StatisticsDbContext>(this.Configuration)
-                .AddTransient<IItemService, ItemService>()
-                .AddTransient<IArtistService, ArtistService>();
+                .AddTransient<IItemsViewsService, ItemsViewsService>()
+                .AddTransient<IStatisticsService, StatisticsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

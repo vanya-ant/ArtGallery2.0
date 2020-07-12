@@ -1,5 +1,6 @@
 ﻿namespace ArtGallery.Items.Data.Configuration
 {
+    using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;

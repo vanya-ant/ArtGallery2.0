@@ -1,6 +1,7 @@
 ﻿namespace ArtGallery.Items.Data
 {
     using ArtGallery.Common.Servcies;
+    using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
     using System.Collections.Generic;
     using System.Linq;

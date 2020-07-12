@@ -1,10 +1,10 @@
-﻿namespace ArtGallery.Statistics.Services.Items
+﻿namespace ArtGallery.Orders.Models
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public interface IItemService
+    public class OrderOtuputModel
     {
     }
 }

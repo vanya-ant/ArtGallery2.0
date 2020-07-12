@@ -10,10 +10,9 @@ namespace ArtGallery.Statistics.Data.Migrations
                 name: "ItemViews",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemId = table.Column<int>(nullable: false),
-                    ArtGallleryUserId = table.Column<string>(nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    ItemId = table.Column<string>(nullable: false),
+                    ArtGallleryUserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,14 +23,18 @@ namespace ArtGallery.Statistics.Data.Migrations
                 name: "Statistics",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
                     TotalItems = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Statistics", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemViews_ItemId",
+                table: "ItemViews",
+                column: "ItemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

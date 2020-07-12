@@ -1,9 +1,7 @@
-﻿namespace ArtGallery.Items.Models
+﻿namespace ArtGallery.Items.Data.Models
 {
     using ArtGallery.Items.Data;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Item

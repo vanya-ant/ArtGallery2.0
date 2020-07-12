@@ -1,10 +1,10 @@
-﻿namespace ArtGallery.Statistics.Services.Items
+﻿namespace ArtGallery.Statistics.Services.Statistics
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public class ItemService : IItemService
+    public interface IStatisticsService 
     {
     }
 }

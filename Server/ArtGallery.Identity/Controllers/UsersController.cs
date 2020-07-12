@@ -21,7 +21,7 @@
 
         [HttpGet]
         [Authorize]
-        [Route("Id")]
+        [Route(Id)]
         public async Task<ActionResult<string>> GetUserId()
         {
             var userId = this.currentUser.UserId;

@@ -6,6 +6,7 @@
     using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class UserService : DataService<User>, IUserService

@@ -4,7 +4,8 @@
     using System.ComponentModel.DataAnnotations;
 
     public class Article
-    {public Article()
+    {   
+        public Article()
         {
             this.Id = Guid.NewGuid().ToString();
         }

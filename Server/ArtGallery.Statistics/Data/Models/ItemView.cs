@@ -1,11 +1,22 @@
-﻿namespace ArtGallery.Statistics.Data.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace ArtGallery.Statistics.Data.Models
 {
     public class ItemView
     {
-        public int Id { get; set; }
+        public ItemView()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
 
-        public int ItemId { get; set; }
+        [Key]
+        public string Id { get; set; }
 
+        [Required]
+        public string ItemId { get; set; }
+
+        [Required]
         public string ArtGallleryUserId { get; set; }
     }
 }
