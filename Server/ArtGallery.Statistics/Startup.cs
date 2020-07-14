@@ -1,7 +1,9 @@
 ﻿using ArtGallery.Common.Infrastructure;
 using ArtGallery.Statistics.Data;
+using ArtGallery.Statistics.Models;
 using ArtGallery.Statistics.Services.ItemsViews;
 using ArtGallery.Statistics.Services.Statistics;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +25,21 @@ namespace ArtGallery.Statistics
             services
                 .AddWebService<StatisticsDbContext>(this.Configuration)
                 .AddTransient<IItemsViewsService, ItemsViewsService>()
-                .AddTransient<IStatisticsService, StatisticsService>();
+                .AddTransient<IStatisticsService, StatisticsService>()
+                .AddMassTransit(mst =>
+                {
+                      mst.AddConsumer<ItemCreatedConsumer>();
+
+                      mst.AddBus(bus => Bus.Factory.CreateUsingRabbitMq(rbmq =>
+                      {
+                          rbmq.Host("localhost");
+
+                          rbmq.ReceiveEndpoint(nameof(ItemCreatedConsumer), endpoint =>
+                          {
+                              endpoint.ConfigureConsumer<ItemCreatedConsumer>(bus);
+                          });
+                      }));
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

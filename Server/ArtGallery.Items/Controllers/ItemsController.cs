@@ -3,14 +3,12 @@
     using ArtGallery.Common.Controllers;
     using ArtGallery.Common.Services.Identity;
     using ArtGallery.Identity;
-    using ArtGallery.Items.Data;
     using ArtGallery.Items.Models;
     using ArtGallery.Items.Models.Items;
     using ArtGallery.Items.Services.Items;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class ItemsController : ApiController
@@ -48,6 +46,5 @@
 
             return new CreateItemOutputModel(itemId);
         }
-
     }
 }

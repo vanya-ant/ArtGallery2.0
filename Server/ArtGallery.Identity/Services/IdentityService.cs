@@ -15,7 +15,7 @@ namespace ArtGallery.Identity
 
         private readonly IJwtTokenGeneratorService jwtTokenGenerator;
 
-        public IdentityService(UserManager<User> userManager, IJwtTokenGeneratorService jwtTokenGenerator)
+        public IdentityService(UserManager<User> userManager, IJwtTokenGeneratorService jwtTokenGenerator)         
         {
             this.jwtTokenGenerator = jwtTokenGenerator;
             this.userManager = userManager;

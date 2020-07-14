@@ -1,19 +1,24 @@
 ﻿namespace ArtGallery.Items.Services.Items
 {
+    using ArtGallery.Common.Messages.Items;
+    using ArtGallery.Common.Servcies;
     using ArtGallery.Items.Data;
     using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
-    using ArtGallery.Items.Services.Artists;
+    using MassTransit;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class ItemService : IItemService
+    public class ItemService : DataService<Item>, IItemService
     {
         private readonly ItemsDbContext context;
 
-        public ItemService(ItemsDbContext context)
+        private readonly IBus publisher;
+
+        public ItemService(ItemsDbContext context, IBus publisher) : base(context)
         {
             this.context = context;
+            this.publisher = publisher;
         }
 
         public async Task<string> CreateItem(ItemInputModel model)
@@ -32,6 +37,11 @@
 
             await this.context.AddAsync(item);
             await this.context.SaveChangesAsync();
+
+            await this.publisher.Publish(new ItemCreatedMessage
+            {
+                ItemId = item.Id
+            });
 
             return item.Id;
         }
