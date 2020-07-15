@@ -19,6 +19,12 @@ export class HeaderComponent implements OnInit {
     this.token = localStorage.getItem('token');
   }
 
+
+  route(param) {
+    console.log(param);
+    this.router.navigate([param]);
+  }
+
   logout() {
     localStorage.removeItem('token');
     this.getToken();

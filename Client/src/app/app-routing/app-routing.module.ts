@@ -27,17 +27,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    loadChildren: () => import('../auth/auth.module').then(m => m.AuthModule),
-    data: {
-      isLogged: false
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    loadChildren: () => import('../auth/auth.module').then(m => m.AuthModule),
+    path: 'auth',
+    loadChildren: () => import('../auth/authentication-routing.module').then(m => m.AuthenticationRoutingModule)
   },
   {
     path: 'contacts',
@@ -48,116 +39,16 @@ const routes: Routes = [
     },
   },
   {
-    path: 'artists',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: ArtistsComponent,
-      },
-      {
-        path: ':id',
-        component: ArtistDetailsComponent,
-        loadChildren: () => import('../artists/artists.module').then(m => m.ArtistsModule),
-        data: {
-          isLogged: false
-        }
-      }
-    ],
-    data: {
-      isLogged: false
-    }
-  },
-  {
-    path: 'artist-create',
-    component: ArtistCreateComponent,
-    loadChildren: () => import('../artists/artists.module').then(m => m.ArtistsModule),
-    canActivate: [AuthGuard],
-    data: {
-      isLogged: true,
-      isAdmin: true
-    }
-  },
-  {
     path: 'items',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: ItemsComponent,
-      },
-      {
-        path: ':id',
-        component: ItemDetailsComponent,
-        loadChildren: () => import('../items/items.module').then(m => m.ItemsModule),
-        data: {
-          isLogged: false
-        }
-      }
-    ],
-    data: {
-      isLogged: false
-    }
-  },
-  {
-    path: 'item-create',
-    component: ItemCreateComponent,
-    loadChildren: () => import('../items/items.module').then(m => m.ItemsModule),
-    canActivate: [AuthGuard],
-    data: {
-      isLogged: true,
-      isAdmin: true
-    }
+    loadChildren: () => import('../items/items-routing.module').then(m => m.ItemsRoutingModule)
   },
   {
     path: 'blog',
-    children: [
-      {
-        path: 'articles-all',
-        component: ArticlesAllComponent,
-        loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule),
-        data: {
-          isLogged: false
-        }
-      },
-      {
-        path: ':id',
-        component: ArticleDetailsComponent,
-        loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule),
-        data: {
-          isLogged: false
-        }
-      }
-    ],
-    data: {
-      isLogged: false
-    }
-  },
-  {
-    path: 'article-create',
-    component: ArtistCreateComponent,
-    loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule),
-    canActivate: [AdminAuthGuardGuard],
-    data: {
-      isLogged: true,
-    }
-  },
-  {
-    path: 'shopping-cart',
-    component: ShoppingCartComponent,
-    loadChildren: () => import('../shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule),
-    canActivate: [AdminAuthGuardGuard],
-    data: {
-      isLogged: true,
-    }
+    loadChildren: () => import('../blog/blog-routing.module').then(m => m.BlogRoutingModule)
   },
   {
     path: 'about',
     component: AboutComponent,
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent
   },
   {
     path: 'privacy',

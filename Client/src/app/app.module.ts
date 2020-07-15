@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import '@angular/compiler';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import '@angular/compiler';
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    ShoppingCartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,10 @@
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
     using ArtGallery.Common.Services.Identity;
+    using System.Reflection;
+    using System;
+    using AutoMapper;
+    using ArtGallery.Common.Models;
 
     public static class ServiceCollectionExtensions
     {
@@ -17,6 +21,7 @@
                 .AddDatabase<TDbContext>(configuration)
                 .AddApplicationSettings(configuration)
                 .AddTokenAuthentication(configuration)
+                .AddAutoMapperProfile(Assembly.GetCallingAssembly())
                 .AddControllers();
 
             return services;
@@ -75,5 +80,11 @@
             return services;
         }
 
+        public static IServiceCollection AddAutoMapperProfile(this IServiceCollection services, Assembly assembly)
+        {
+            return services.AddAutoMapper((_, config) => config
+                      .AddProfile(new MappingProfile(assembly)),
+                   Array.Empty<Assembly>());
+        }
     }
 }

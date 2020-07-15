@@ -1,7 +1,7 @@
 <div class="container">
   <div class="wrapper">
     <div class="gallery">
-      <div *ngIf="items && items.length != 0">
+      <div *ngIf="items && items.length != 0 else empty">
         <div *ngFor="let item of items" class="gallery-item">
           <h2>{{item.category}}</h2>
           <h4>Author: {{item.artist}}</h4>
@@ -12,7 +12,10 @@
           </div>
         </div>
       </div>
-      <h2>Currently no art items to display!</h2>
     </div>
   </div>
 </div>
+
+<ng-template #empty>
+  <h2 class="no-items">Currently no art items to display!</h2>
+</ng-template>

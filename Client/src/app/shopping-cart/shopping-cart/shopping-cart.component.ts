@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ItemsService } from '../../shared/services/items.service';
 import { OrdersService } from '../../shared/services/orders-service.service';
+import { IItem } from '../../shared/item';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../auth/authentication.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,7 +13,7 @@ import { OrdersService } from '../../shared/services/orders-service.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  cartItems = [];
+  cartItems: IItem[];
   totalPrice = 0;
   added = '';
 
@@ -20,6 +23,9 @@ export class ShoppingCartComponent implements OnInit {
   constructor(
     private itemsService: ItemsService,
     private ordersService: OrdersService,
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +35,7 @@ export class ShoppingCartComponent implements OnInit {
       return sum + +current.price;
     }, 0);
 
-    this.form = new FormGroup({
+    this.form = this.fb.group({
       name: new FormControl(null, Validators.required),
       phone: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
@@ -61,8 +67,8 @@ export class ShoppingCartComponent implements OnInit {
     });*/
   }
 
-  delete(product) {
-    this.totalPrice -= +product.price;
-    this.cartItems.splice(this.cartItems.indexOf(product), 1);
+  delete(item) {
+    this.totalPrice -= +item.price;
+    this.cartItems.splice(this.cartItems.indexOf(item), 1);
   }
 }

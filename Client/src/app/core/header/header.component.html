@@ -37,19 +37,19 @@
     <div class="user">
       <ul class="hidden">
         <li>
-          <a href="/blog/articles-all">Blog</a>
+          <a (click)="route('blog')">Blog</a>
         </li>
           <li *ngIf="!token">
-            <a href="/login">Login</a>
+            <a (click)="route('auth')">Login</a>
           </li>
           <li *ngIf="!token">
-            <a href="/register">Register</a>
+            <a (click)="route('auth')">Register</a>
           </li>
           <li *ngIf="token">
-          <a href="/item-create">Create item</a>
+          <a (click)="route('items/create')">Create item</a>
           </li>
           <li *ngIf="token">
-            <a href="/artist-create">Create artist</a>
+            <a (click)="route('artists/create')">Create artist</a>
           </li>
           <li *ngIf="token">
             <a (click)="logout()">Logout</a>

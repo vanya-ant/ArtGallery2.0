@@ -61,9 +61,9 @@ export class ItemCreateComponent implements OnInit {
     this.item.category = this.form.value.category;
     this.item.description = this.form.value.description;
     this.item.price = this.form.value.price;
-    this.item.imageUrl = this.fb;
+    this.item.imageUrl = this.form.value.imageUrl;
 
-    await this.itemsService.createItem(this.item);
+    this.itemsService.createItem(this.item);
     await this.router.navigate(['all']);
     this.toastr.success('Successfully created art-item!');
   }
