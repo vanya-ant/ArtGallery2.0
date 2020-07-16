@@ -2,6 +2,7 @@
 {
     using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
+    using ArtGallery.Items.Models.Artist;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -9,6 +10,10 @@
     {
         public Task<IEnumerable<ArtistOutputModel>> GetAll();
 
-        public Task<Artist> FindByUser(string userId);
+        public Task<ArtistDetailsModel> ArtistDetails(string id);
+
+        public Task<ArtistOutputModel> FindByUser(string userId);
+
+        public Task<CreateArtistOutputModel> Create(ArtistInputModel model);
     }
 }

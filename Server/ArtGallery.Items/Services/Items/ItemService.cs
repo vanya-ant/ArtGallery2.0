@@ -5,6 +5,7 @@
     using ArtGallery.Items.Data;
     using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
+    using ArtGallery.Items.Services.Artists;
     using MassTransit;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -15,20 +16,23 @@
 
         private readonly IBus publisher;
 
-        public ItemService(ItemsDbContext context, IBus publisher) : base(context)
+        private readonly IArtistService artistService;
+
+        public ItemService(ItemsDbContext context, IBus publisher, IArtistService artistService) : base(context)
         {
             this.context = context;
             this.publisher = publisher;
+            this.artistService = artistService;
         }
 
         public async Task<string> CreateItem(ItemInputModel model)
         {
-            /*var artist = this.artistService.FindByUser(model.Author.Id);*/
+            var author = await this.artistService.FindByUser(model.AuthorName);
 
             var item = new Item
             {
                 Name = model.Name,
-                AuthorId = model.Author.Id,
+                AuthorId = author.Id,
                 CategoryId = model.Category.Id,
                 Description = model.Description,
                 ImageUrl = model.ImageUrl,

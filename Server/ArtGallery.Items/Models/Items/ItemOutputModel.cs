@@ -8,7 +8,7 @@ namespace ArtGallery.Items.Models
 
         public string Name { get; set; }
 
-        public Artist Author { get; set; }
+        public string Author { get; set; }
 
         public Category Category { get; set; }
 

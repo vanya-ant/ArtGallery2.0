@@ -7,6 +7,8 @@
 
     public class ArtistOutputModel
     {
+        public string Id { get; }
+
         public string ImageUrl { get; set; }
 
         public Category Category { get; set; }

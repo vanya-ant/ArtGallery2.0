@@ -1,12 +1,12 @@
-﻿using ArtGallery.Items.Data.Models;
-
-namespace ArtGallery.Items.Models
+﻿namespace ArtGallery.Items.Models
 {
+    using ArtGallery.Items.Data.Models;
+
     public class ItemInputModel
     {
         public string Name { get; set; }
 
-        public Artist Author { get; set; }
+        public string AuthorName { get; set; }
 
         public Category Category { get; set; }
 
