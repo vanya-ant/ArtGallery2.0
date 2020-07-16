@@ -8,6 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ArtistCreateComponent implements OnInit {
 
+  options = [
+    { name: 'Paintings', value: 'Paintings' },
+    { name: 'Photography', value: 'Photography' },
+    { name: 'Illustration', value: 'Illustration' },
+    { name: 'Sculpture', value: 'Sculpture' },
+    { name: 'Prints', value: 'Prints' },
+    { name: 'Textile', value: 'Textile' },
+    { name: 'Design', value: 'Design' },
+    { name: 'Jewelery', value: 'Jewelery' },
+  ];
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -17,6 +28,11 @@ export class ArtistCreateComponent implements OnInit {
   }
 
   create() {
+
+  }
+
+  run() {
+    const category = document.getElementById('category');
 
   }
 }

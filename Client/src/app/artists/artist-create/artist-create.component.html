@@ -4,8 +4,14 @@
         <h2>Add artist</h2>
         <label for="artist-name">Name</label>
         <input formControlName="Name" id="artist-name" type="text" placeholder="Add artist name..."/>
-        <label for="artist-field">Artist field</label>
-        <input formControlName="Filed" id="artist-field" type="text" placeholder="Add artist name..."/>
+        <label for="category">Artist category</label>
+        <div class="categories">
+          <select id="category" formControlName="category" (ngModelChange)="run()">
+            <option *ngFor="let category of options" [ngValue]="category">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
         <label for="artist-image-url">Image Url</label>
         <input formControlName="ImageUrl" id="artist-image-url" type="text" placeholder="Add item description..."/>
         <label for="artist-email">Artist email</label>

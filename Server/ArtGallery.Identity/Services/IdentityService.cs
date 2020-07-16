@@ -61,7 +61,7 @@ namespace ArtGallery.Identity
 
             var token = this.jwtTokenGenerator.GenerateToken(currentUser, roles);
 
-            return new UserOutputModel(token);
+            return new UserOutputModel(token, currentUser.Id);
         }
 
         public async Task<Result> ChangePassword(string userId, ChangePasswordInputModel model)

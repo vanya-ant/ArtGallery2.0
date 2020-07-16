@@ -40,12 +40,13 @@
         {
             var result = await this.identity.Login(model);
 
+           
             if (!result)
             {
                 return BadRequest(result.Errors);
             }
 
-            return new UserOutputModel(result.Data.Token);
+            return new UserOutputModel(result.Data.Token, result.Data.Id);
         }
 
 

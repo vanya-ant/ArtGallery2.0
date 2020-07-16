@@ -9,7 +9,7 @@ export class AdminAuthGuardGuard implements CanActivate {
 
   canActivate(): boolean {
     if (!this.isAdmin(this.getToken())) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['auth']);
       return false;
     }
     return true;
@@ -25,10 +25,6 @@ export class AdminAuthGuardGuard implements CanActivate {
     const decodedJwtData = JSON.parse(decodedJwtJsonData);
 
     const role = decodedJwtData.Role;
-    if (role === 'Admin') {
-      return true;
-    }
-
-    return false;
+    return role === 'Admin';
   }
 }

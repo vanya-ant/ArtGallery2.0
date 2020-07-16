@@ -3,10 +3,10 @@
     <input type="checkbox" id="nav-check">
     <ul class="hidden">
       <li>
-        <a class="logo" href="/"><img src="assets/img/logo.svg"></a>
+        <a class="logo" (click)="route('/')"><img src="assets/img/logo.svg"></a>
       </li>
       <li>
-        <a href="/artists">Artists</a>
+        <a (click)="route('artists')">Artists</a>
       </li>
       <li>
         <div class="categories">
@@ -40,13 +40,13 @@
           <a (click)="route('blog')">Blog</a>
         </li>
           <li *ngIf="!token">
-            <a (click)="route('auth')">Login</a>
+            <a (click)="route('auth/login')">Login</a>
           </li>
           <li *ngIf="!token">
-            <a (click)="route('auth')">Register</a>
+            <a (click)="route('auth/register')">Register</a>
           </li>
           <li *ngIf="token">
-          <a (click)="route('item-list/create')">Create item</a>
+          <a (click)="route('items/create')">Create item</a>
           </li>
           <li *ngIf="token">
             <a (click)="route('artists/create')">Create artist</a>

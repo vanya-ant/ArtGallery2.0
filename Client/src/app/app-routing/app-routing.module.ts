@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren: () => import('../blog/blog-routing.module').then(m => m.BlogRoutingModule)
   },
   {
+    path: 'artists',
+    loadChildren: () => import('../artists/artists-routing.module').then(m => m.ArtistsRoutingModule)
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
