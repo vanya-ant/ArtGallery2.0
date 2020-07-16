@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IArtist } from "../../shared/artist";
+import { IArtist } from '../../shared/artist';
 
 @Component({
   selector: 'app-artists',
-  templateUrl: './artists.component.html',
-  styleUrls: ['./artists.component.scss']
+  templateUrl: './artist-list.html',
+  styleUrls: ['./artist-list.component.scss']
 })
-export class ArtistsComponent implements OnInit {
+export class ArtistListComponent implements OnInit {
 
   artists: IArtist[] = [];
   artist: IArtist;

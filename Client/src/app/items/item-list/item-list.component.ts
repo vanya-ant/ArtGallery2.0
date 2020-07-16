@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.scss']
 })
-export class ItemsComponent implements OnInit {
+export class ItemListComponent implements OnInit {
   items: IItem[];
   id: string;
   category: null;

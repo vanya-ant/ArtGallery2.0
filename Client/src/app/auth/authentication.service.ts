@@ -12,7 +12,7 @@ export class AuthenticationService {
   loginPath: string = environment.identityApiUrl + 'identity/login';
   userIdPath: string = environment.identityApiUrl + 'users/id';
   itemsPath: string = environment.itemsApiUrl + 'items';
-  itemDetailsPath: string = environment.itemsApiUrl + 'items/id';
+  itemDetailsPath: string = environment.itemsApiUrl + 'item-list/id';
   artistsPath: string = environment.itemsApiUrl + 'artists';
   artistDetailsPath: string = environment.itemsApiUrl + 'artist/id';
 

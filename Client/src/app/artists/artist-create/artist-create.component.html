@@ -1,6 +1,6 @@
 
     <div class="add-artist">
-      <form [formGroup]="form">
+      <form [formGroup]="form" (ngSubmit)="create()">
         <h2>Add artist</h2>
         <label for="artist-name">Name</label>
         <input formControlName="Name" id="artist-name" type="text" placeholder="Add artist name..."/>

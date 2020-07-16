@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['items-all']);
+      this.router.navigate(['item-list-all']);
     }
   }
 

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-articles-all',
-  templateUrl: './articles-all.component.html',
-  styleUrls: ['./articles-all.component.scss']
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.scss']
 })
-export class ArticlesAllComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
 
   constructor() { }
 

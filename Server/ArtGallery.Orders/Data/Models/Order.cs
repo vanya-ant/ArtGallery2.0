@@ -21,5 +21,13 @@
         public ArtGalleryUser Buyer { get; set; }
 
         public string BuyerId { get; set; }
+
+        public string Payment { get; set; }
+
+        public string BuyerName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Address { get; set; }
     }
 }

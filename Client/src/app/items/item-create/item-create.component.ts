@@ -50,21 +50,23 @@ export class ItemCreateComponent implements OnInit {
       artist: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(3)]],
-      image: ['', [Validators.required]],
+      imageUrl: ['', [Validators.required]],
       price: [0, [Validators.required, Validators.min(0)]],
     });
   }
 
   async create() {
-    this.item.name = this.form.value.name;
-    this.item.artist = this.form.value.artist;
-    this.item.category = this.form.value.category;
-    this.item.description = this.form.value.description;
-    this.item.price = this.form.value.price;
-    this.item.imageUrl = this.form.value.imageUrl;
+    const item = {
+      name: this.form.value.name,
+      artist: this.form.value.artist,
+      category: this.form.value.category,
+      description: this.form.value.description,
+      price: this.form.value.price,
+      imageUrl: this.form.value.imageUrl
+    };
 
-    this.itemsService.createItem(this.item);
-    await this.router.navigate(['all']);
+    this.itemsService.createItem(item);
+    await this.router.navigate(['']);
     this.toastr.success('Successfully created art-item!');
   }
 

@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import {
   AuthGuard as AuthGuard
 } from '../auth/auth.guard';
-import { ItemsComponent } from './items/items.component';
+import { ItemListComponent } from './item-list/item-list.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ItemCreateComponent} from './item-create/item-create.component';
 import {ItemDetailsComponent} from './item-details/item-details.component';
 
 const routes: Routes = [
-  { path: '', component: ItemsComponent },
+  { path: '', component: ItemListComponent },
   { path: 'create', component: ItemCreateComponent, canActivate: [AuthGuard] },
   { path: ':id', component: ItemDetailsComponent },
 ];

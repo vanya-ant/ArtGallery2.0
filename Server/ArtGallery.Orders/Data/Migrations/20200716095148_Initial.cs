@@ -48,7 +48,11 @@ namespace ArtGallery.Orders.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    BuyerId = table.Column<string>(nullable: false)
+                    BuyerId = table.Column<string>(nullable: false),
+                    Payment = table.Column<string>(nullable: true),
+                    BuyerName = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import '@angular/compiler';
-import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import {OrdersModule} from './orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
       preventDuplicates: true,
     }),
     AppRoutingModule,
-    ShoppingCartModule,
+    OrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,4 +16,7 @@ export class ArtistCreateComponent implements OnInit {
 
   }
 
+  create() {
+
+  }
 }
