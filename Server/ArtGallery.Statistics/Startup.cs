@@ -26,20 +26,7 @@
                 .AddWebService<StatisticsDbContext>(this.Configuration)
                 .AddTransient<IItemsViewsService, ItemsViewsService>()
                 .AddTransient<IStatisticsService, StatisticsService>()
-                .AddMassTransit(mst =>
-                {
-                      mst.AddConsumer<ItemCreatedConsumer>();
-
-                      mst.AddBus(bus => Bus.Factory.CreateUsingRabbitMq(rbmq =>
-                      {
-                          rbmq.Host("localhost");
-
-                          rbmq.ReceiveEndpoint(nameof(ItemCreatedConsumer), endpoint =>
-                          {
-                              endpoint.ConfigureConsumer<ItemCreatedConsumer>(bus);
-                          });
-                      }));
-                });
+                .AddMessaging(typeof(ItemCreatedConsumer));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

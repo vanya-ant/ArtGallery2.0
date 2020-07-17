@@ -1,16 +1,19 @@
 ﻿namespace ArtGallery.Common.Infrastructure
 {
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.IdentityModel.Tokens;
     using System.Text;
     using ArtGallery.Common.Services.Identity;
     using System.Reflection;
     using System;
     using AutoMapper;
+    using MassTransit;
     using ArtGallery.Common.Models;
+    using System.Threading.Tasks;
+    using GreenPipes;
 
     public static class ServiceCollectionExtensions
     {
@@ -47,7 +50,7 @@
             return services;
         }
 
-        public static IServiceCollection AddTokenAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddTokenAuthentication(this IServiceCollection services, IConfiguration configuration, JwtBearerEvents events = null)
         {
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))
@@ -72,6 +75,24 @@
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
+
+                    br.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+
+                            // If the request is for our hub...
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) &&
+                                (path.StartsWithSegments("/hubs/chat")))
+                            {
+                                // Read the token out of the query string
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddHttpContextAccessor();
@@ -85,6 +106,36 @@
             return services.AddAutoMapper((_, config) => config
                       .AddProfile(new MappingProfile(assembly)),
                    Array.Empty<Assembly>());
+        }
+
+        public static IServiceCollection AddMessaging(
+           this IServiceCollection services,
+           params Type[] consumers)
+        {
+            services
+                .AddMassTransit(mt =>
+                {
+                    foreach (var consumer in consumers)
+                    {
+                        mt.AddConsumer(consumer);
+                    }
+
+                    mt.AddBus(bus => Bus.Factory.CreateUsingRabbitMq(rmq =>
+                    {
+                        rmq.Host("localhost");
+
+                        foreach (var consumer in consumers)
+                        {
+                            rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
+                            {
+                                endpoint.ConfigureConsumer(bus, consumer);
+                            });
+                        }
+                    }));
+                })
+                .AddMassTransitHostedService();
+
+            return services;
         }
     }
 }

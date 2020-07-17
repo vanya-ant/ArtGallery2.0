@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="7.0.1" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -14,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArtGallery.Identity\ArtGallery.Identity.csproj" />
+    <ProjectReference Include="..\ArtGallery.Common\ArtGallery.Common\ArtGallery.Common.csproj" />
+    <ProjectReference Include="..\ArtGallery.Statistics\ArtGallery.Statistics.csproj" />
   </ItemGroup>
 
 </Project>
