@@ -26,8 +26,6 @@ export class ItemCreateComponent implements OnInit {
 
   downloadURL: Observable<string>;
 
-  fb;
-
   options = [
     { name: 'Paintings', value: 'Paintings' },
     { name: 'Photography', value: 'Photography' },
@@ -72,7 +70,6 @@ export class ItemCreateComponent implements OnInit {
 
   run() {
     const category = document.getElementById('category');
-
   }
 
   async upload(event) {

@@ -1,10 +1,13 @@
 ﻿namespace ArtGallery.Items.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using ArtGallery.Items.Data.Models;
+    using AutoMapper;
 
-    public class ItemDetailsModel
+    public class ItemDetailsModel : ItemOutputModel
     {
+        public void Mapping(Profile mapper)
+            => mapper
+                .CreateMap<Item, ItemDetailsModel>()
+                .IncludeBase<Item, ItemOutputModel>();
     }
 }

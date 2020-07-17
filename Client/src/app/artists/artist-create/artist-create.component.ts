@@ -21,10 +21,15 @@ export class ArtistCreateComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
+    this.form = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.minLength(3)]],
+      imageUrl: ['', [Validators.required]],
+    });
   }
 
   create() {
@@ -33,6 +38,5 @@ export class ArtistCreateComponent implements OnInit {
 
   run() {
     const category = document.getElementById('category');
-
   }
 }

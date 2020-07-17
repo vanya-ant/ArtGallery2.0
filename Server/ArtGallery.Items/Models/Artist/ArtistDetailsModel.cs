@@ -1,22 +1,12 @@
 ﻿namespace ArtGallery.Items.Models
 {
-    using ArtGallery.Items.Data.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using AutoMapper;
 
-    public class ArtistDetailsModel
+    public class ArtistDetailsModel : ArtistOutputModel
     {
-        public string ImageUrl { get; set; }
-
-        public Category Category { get; set; }
-
-        public string CategoryId { get; set; }
-
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public ICollection<Item> Items { get; set; }
+        public void Mapping(Profile mapper)
+               => mapper
+                   .CreateMap<ArtGallery.Items.Data.Models.Artist, ArtistDetailsModel>()
+                   .IncludeBase<ArtGallery.Items.Data.Models.Artist, ArtistOutputModel>();
     }
 }

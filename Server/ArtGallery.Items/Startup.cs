@@ -3,7 +3,6 @@
     using ArtGallery.Common.Infrastructure;
     using ArtGallery.Items.Data;
     using ArtGallery.Items.Services.Artists;
-    using ArtGallery.Items.Services.Categories;
     using ArtGallery.Items.Services.Items;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -24,7 +23,6 @@
             services
                 .AddWebService<ItemsDbContext>(this.Configuration)
                 .AddTransient<IItemService, ItemService>()
-                .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<IArtistService, ArtistService>()
                 .AddMessaging();
         }

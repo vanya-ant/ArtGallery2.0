@@ -46,6 +46,9 @@
             <a (click)="route('auth/register')">Register</a>
           </li>
           <li *ngIf="token">
+            <a (click)="route('blog/create')">Create article</a>
+          </li>
+          <li *ngIf="token">
           <a (click)="route('items/create')">Create item</a>
           </li>
           <li *ngIf="token">

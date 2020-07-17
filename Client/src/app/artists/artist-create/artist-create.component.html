@@ -3,7 +3,7 @@
       <form [formGroup]="form" (ngSubmit)="create()">
         <h2>Add artist</h2>
         <label for="artist-name">Name</label>
-        <input formControlName="Name" id="artist-name" type="text" placeholder="Add artist name..."/>
+        <input formControlName="name" id="artist-name" type="text" placeholder="Add artist name..."/>
         <label for="category">Artist category</label>
         <div class="categories">
           <select id="category" formControlName="category" (ngModelChange)="run()">
@@ -13,9 +13,9 @@
           </select>
         </div>
         <label for="artist-image-url">Image Url</label>
-        <input formControlName="ImageUrl" id="artist-image-url" type="text" placeholder="Add item description..."/>
+        <input formControlName="imageUrl" id="artist-image-url" type="text" placeholder="Add image url..."/>
         <label for="artist-email">Artist email</label>
-        <input formControlName="Email" id="artist-email" type="email" placeholder="Add item price..."/>
+        <input formControlName="email" id="artist-email" type="email" placeholder="Add artist email..."/>
         <button type="submit" class="add-item-button" [disabled]="form.invalid">Create artist</button>
       </form>
     </div>

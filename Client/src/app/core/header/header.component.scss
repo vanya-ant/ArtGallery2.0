@@ -32,8 +32,10 @@ input[type=checkbox] {
 }
 
 .hidden li {
+  display: flex;
   list-style: none;
   padding-left: 2em;
+  justify-content: center;
 }
 
 .hidden li a {
