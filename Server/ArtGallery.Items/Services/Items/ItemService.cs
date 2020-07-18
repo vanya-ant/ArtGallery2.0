@@ -5,7 +5,6 @@
     using ArtGallery.Items.Data;
     using ArtGallery.Items.Data.Models;
     using ArtGallery.Items.Models;
-    using ArtGallery.Items.Services.Artists;
     using AutoMapper;
     using MassTransit;
     using Microsoft.AspNetCore.Mvc;
@@ -22,24 +21,20 @@
 
         private readonly IMapper mapper;
 
-        private readonly IArtistService artistService;
-
-        public ItemService(ItemsDbContext context, IBus publisher, IArtistService artistService, IMapper mapper) : base(context)
+        public ItemService(ItemsDbContext context, IBus publisher, IMapper mapper) : base(context)
         {
             this.context = context;
             this.publisher = publisher;
-            this.artistService = artistService;
+   
             this.mapper = mapper;
         }
 
         public async Task<string> CreateItem(ItemInputModel model)
         {
-            var author = await this.artistService.FindByUser(model.AuthorName);
-
             var item = new Item
             {
                 Name = model.Name,
-                AuthorId = author.Id,
+                AuthorName = model.AuthorName,
                 CategoryId = model.Category.Id,
                 Description = model.Description,
                 ImageUrl = model.ImageUrl,

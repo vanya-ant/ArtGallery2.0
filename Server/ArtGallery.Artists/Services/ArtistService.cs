@@ -1,11 +1,10 @@
-﻿namespace ArtGallery.Items.Services.Artists
+﻿namespace ArtGallery.Artists.Services
 {
+    using ArtGallery.Artists.Data;
+    using ArtGallery.Artists.Data.Models;
+    using ArtGallery.Artists.Models;
     using ArtGallery.Common.Messages.Artists;
     using ArtGallery.Common.Servcies;
-    using ArtGallery.Items.Data;
-    using ArtGallery.Items.Data.Models;
-    using ArtGallery.Items.Models;
-    using ArtGallery.Items.Models.Artist;
     using AutoMapper;
     using MassTransit;
     using Microsoft.EntityFrameworkCore;
@@ -13,15 +12,15 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class ArtistService : DataService<Artist>, IArtistService 
+    public class ArtistService : DataService<Artist>, IArtistService
     {
-        private readonly ItemsDbContext context;
+        private readonly ArtistsDbContext context;
 
         private readonly IBus publisher;
 
         private readonly IMapper mapper;
 
-        public ArtistService(ItemsDbContext context, IBus publisher, IMapper mapper) : base(context)
+        public ArtistService(ArtistsDbContext context, IBus publisher, IMapper mapper) : base(context)
         {
             this.context = context;
             this.publisher = publisher;
@@ -52,11 +51,11 @@
         {
             var artist = new Artist
             {
-               Name = model.Name,
-               ImageUrl = model.ImageUrl,
-               Category = model.Category.ToString(),
-               Email = model.Email,
-               CategoryId = model.Category.Id,
+                Name = model.Name,
+                ImageUrl = model.ImageUrl,
+                Category = model.Category.ToString(),
+                Email = model.Email,
+                CategoryId = model.Category.ToString(),
             };
 
             await this.context.AddAsync(artist);
@@ -67,7 +66,7 @@
                 ArtistId = artist.Id
             });
 
-            return new CreateArtistOutputModel(artist.Id); 
+            return new CreateArtistOutputModel(artist.Id);
         }
     }
 }

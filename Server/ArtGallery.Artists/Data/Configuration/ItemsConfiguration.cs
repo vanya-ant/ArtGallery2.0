@@ -1,10 +1,8 @@
-﻿namespace ArtGallery.Items.Data.Configuration
+﻿namespace ArtGallery.Artists.Data.Configuration
 {
-    using ArtGallery.Items.Data.Models;
-    using ArtGallery.Items.Models;
+    using ArtGallery.Artists.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using System.Linq;
 
     public class ItemsConfiguration : IEntityTypeConfiguration<Item>
     {   
@@ -23,11 +21,11 @@
               .IsRequired();
 
             builder
-             .Property(i => i.CategoryId)
+             .Property(i => i.Category)
              .IsRequired();
 
             builder
-                .Property(i => i.AuthorName)
+                .Property(i => i.AuthorId)
                 .IsRequired();
 
             builder

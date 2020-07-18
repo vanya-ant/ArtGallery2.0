@@ -1,1 +1,14 @@
-<p>article-create works!</p>
+<div class="add-article">
+  <form [formGroup]="form" (ngSubmit)="create()">
+    <h2>New Article</h2>
+    <label for="title">title</label>
+    <input formControlName="title" id="title" type="text" placeholder="Add article title..."/>
+    <label for="author">Author</label>
+    <input formControlName="author" id="author" placeholder="Author...">
+    <label for="date">Image Url</label>
+    <input type="date" formControlName="date" id="date" placeholder="Add image url..."/>
+    <label for="content">Content</label>
+    <textarea formControlName="content" id="content" type="email" placeholder="Add content..."></textarea>
+    <button type="submit" class="add-item-button" [disabled]="form.invalid">Create article</button>
+  </form>
+</div>

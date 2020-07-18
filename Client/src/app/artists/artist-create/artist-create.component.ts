@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ArtistsService} from '../../shared/services/artists.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-artist-create',
@@ -21,7 +24,10 @@ export class ArtistCreateComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private artistsService: ArtistsService,
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -32,8 +38,11 @@ export class ArtistCreateComponent implements OnInit {
     });
   }
 
-  create() {
-
+  async create() {
+    this.artistsService.createArtist(this.form.value).subscribe(res => {
+      this.toastr.success('Successfully created artist!');
+      this.router.navigate(['blog']);
+    });
   }
 
   run() {

@@ -2,10 +2,9 @@
 {
     using ArtGallery.Common.Infrastructure;
     using ArtGallery.Statistics.Data;
-    using ArtGallery.Statistics.Models;
+    using ArtGallery.Statistics.Messages;
     using ArtGallery.Statistics.Services.ItemsViews;
     using ArtGallery.Statistics.Services.Statistics;
-    using MassTransit;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;

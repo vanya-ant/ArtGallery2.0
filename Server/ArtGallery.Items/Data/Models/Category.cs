@@ -20,7 +20,5 @@
 
         public ICollection<Item> Items { get; set; }
 
-        public ICollection<Artist> Artists { get; set; }
-
     }
 }

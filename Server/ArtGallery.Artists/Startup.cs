@@ -1,8 +1,8 @@
-﻿namespace ArtGallery.Items
+namespace ArtGallery.Artists
 {
+    using ArtGallery.Artists.Data;
+    using ArtGallery.Artists.Services;
     using ArtGallery.Common.Infrastructure;
-    using ArtGallery.Items.Data;
-    using ArtGallery.Items.Services.Items;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -10,18 +10,14 @@
 
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            this.Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration) => this.Configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddWebService<ItemsDbContext>(this.Configuration)
-                .AddTransient<IItemService, ItemService>()
+                .AddWebService<ArtistsDbContext>(this.Configuration)
+                .AddTransient<IArtistService, ArtistService>()
                 .AddMessaging();
         }
 
@@ -29,6 +25,6 @@
         {
             app.UseWebService(env)
                 .Initialize();
-        }
+        }      
     }
 }

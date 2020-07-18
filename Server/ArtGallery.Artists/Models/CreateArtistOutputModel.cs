@@ -1,4 +1,4 @@
-﻿namespace ArtGallery.Items.Models.Artist
+﻿namespace ArtGallery.Artists.Models
 {
     public class CreateArtistOutputModel
     {

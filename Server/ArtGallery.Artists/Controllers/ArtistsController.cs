@@ -1,9 +1,8 @@
-﻿namespace ArtGallery.Items.Controllers
+﻿namespace ArtGallery.Artists.Controllers
 {
+    using ArtGallery.Artists.Models;
+    using ArtGallery.Artists.Services;
     using ArtGallery.Common.Services.Identity;
-    using ArtGallery.Items.Models;
-    using ArtGallery.Items.Models.Artist;
-    using ArtGallery.Items.Services.Artists;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;

@@ -1,11 +1,13 @@
-﻿namespace ArtGallery.Items.Data.Models
+﻿namespace ArtGallery.Artists.Data.Models
 {
+    using ArtGallery.Items.Data.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Artist
     {
+
         public Artist()
         {
             this.Id = Guid.NewGuid().ToString();
@@ -20,8 +22,6 @@
 
         [Required]
         public string Category { get; set; }
-
-        public string CategoryId { get; set; }
 
         [Required]
         public string Name { get; set; }

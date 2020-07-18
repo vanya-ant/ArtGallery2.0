@@ -1,4 +1,4 @@
-﻿namespace ArtGallery.Statistics.Models
+﻿namespace ArtGallery.Statistics.Messages
 {
     using ArtGallery.Common.Messages.Items;
     using ArtGallery.Statistics.Services.Statistics;
@@ -8,6 +8,12 @@
     public class ItemCreatedConsumer : IConsumer<ItemCreatedMessage>
     {
         private readonly IStatisticsService statisticsService;
+
+        public ItemCreatedConsumer(IStatisticsService statisticsService)
+        {
+            this.statisticsService = statisticsService;
+        }
+
         public async Task Consume(ConsumeContext<ItemCreatedMessage> context)
         {
             var message = context.Message;

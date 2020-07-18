@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Statistics", "Ar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Orders", "ArtGallery.Orders\ArtGallery.Orders.csproj", "{10F352F2-CF56-4978-B8AC-8264FDEE1D67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGallery.Common", "ArtGallery.Common\ArtGallery.Common\ArtGallery.Common.csproj", "{AA434D21-DEC0-45B9-B036-6A2B9FC0A459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Common", "ArtGallery.Common\ArtGallery.Common\ArtGallery.Common.csproj", "{AA434D21-DEC0-45B9-B036-6A2B9FC0A459}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGallery.Artists", "ArtGallery.Artists\ArtGallery.Artists.csproj", "{FB5B6E4D-4CA6-474C-AF63-A4B172543AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{AA434D21-DEC0-45B9-B036-6A2B9FC0A459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA434D21-DEC0-45B9-B036-6A2B9FC0A459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA434D21-DEC0-45B9-B036-6A2B9FC0A459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB5B6E4D-4CA6-474C-AF63-A4B172543AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB5B6E4D-4CA6-474C-AF63-A4B172543AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB5B6E4D-4CA6-474C-AF63-A4B172543AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB5B6E4D-4CA6-474C-AF63-A4B172543AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

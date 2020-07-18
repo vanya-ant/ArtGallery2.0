@@ -54,18 +54,9 @@ export class ItemCreateComponent implements OnInit {
   }
 
   async create() {
-    const item = {
-      name: this.form.value.name,
-      artist: this.form.value.artist,
-      category: this.form.value.category,
-      description: this.form.value.description,
-      price: this.form.value.price,
-      imageUrl: this.form.value.imageUrl
-    };
-
-    this.itemsService.createItem(item);
-    await this.router.navigate(['']);
+    this.itemsService.createItem(this.form.value);
     this.toastr.success('Successfully created art-item!');
+    await this.router.navigate(['items']);
   }
 
   run() {

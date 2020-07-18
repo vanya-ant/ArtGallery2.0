@@ -1,8 +1,6 @@
-﻿namespace ArtGallery.Items.Services.Artists
+﻿namespace ArtGallery.Artists.Services
 {
-    using ArtGallery.Items.Data.Models;
-    using ArtGallery.Items.Models;
-    using ArtGallery.Items.Models.Artist;
+    using ArtGallery.Artists.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

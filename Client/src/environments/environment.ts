@@ -9,6 +9,7 @@ export const environment = {
   blogApiUrl: 'http://localhost:5005/',
   ordersApiUrl: 'http://localhost:5007/',
   statisticsApiUrl: 'http://localhost:5009/',
+  artistsPath: 'http://localhost:5013'
 };
 
 /*

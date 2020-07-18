@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class ItemsService {
   item: IItem;
-  itemsPath: string = environment.itemsApiUrl + 'item-list/';
+  itemsPath: string = environment.itemsApiUrl;
   itemsPathWithoutSlash  = this.itemsPath.slice(0, -1);
 
   constructor(
@@ -43,9 +43,5 @@ export class ItemsService {
 
   sort(queryString): Observable<Array<IItem>> {
     return this.http.get<Array<IItem>>(this.itemsPathWithoutSlash + queryString);
-  }
-
-  changeAvailability(id): Observable<boolean> {
-    return this.http.put<boolean>(this.itemsPath + id + '/ChangeAvailability', {});
   }
 }

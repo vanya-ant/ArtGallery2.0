@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['item-list-all']);
+      this.router.navigate(['items']);
     }
   }
 
@@ -32,13 +32,12 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.form.value).subscribe(res => {
       this.auth.setToken(res.token);
 
-      this.auth.getUserId().subscribe(result => {
-        this.auth.setId(result);
-
-        this.router.navigate(['items']).then(() => {
-          window.location.reload();
-        });
+      this.router.navigate(['items']).then(() => {
+        window.location.reload();
       });
+   /*   this.auth.getUserId().subscribe(result => {
+        this.auth.setId(result);
+      });*/
     });
   }
 }

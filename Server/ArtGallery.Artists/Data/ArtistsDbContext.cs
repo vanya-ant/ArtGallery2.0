@@ -1,21 +1,20 @@
-﻿namespace ArtGallery.Items.Data
+﻿namespace ArtGallery.Artists.Data
 {
-    using ArtGallery.Items.Data.Models;
-    using ArtGallery.Items.Models;
+    using ArtGallery.Artists.Data.Models;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.VisualBasic;
     using System.Reflection;
 
-    public class ItemsDbContext : DbContext
+
+    public class ArtistsDbContext : DbContext
     {
-        public ItemsDbContext(DbContextOptions<ItemsDbContext> options)
+        public ArtistsDbContext(DbContextOptions<ArtistsDbContext> options)
             : base(options)
         {
         }
 
         public DbSet<Item> Items { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Artist> Artists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

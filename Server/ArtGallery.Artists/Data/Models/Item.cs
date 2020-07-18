@@ -1,8 +1,10 @@
-﻿namespace ArtGallery.Items.Data.Models
+﻿namespace ArtGallery.Artists.Data.Models
 {
-    using ArtGallery.Items.Data;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class Item
     {
@@ -15,13 +17,13 @@
 
         public string Name { get; set; }
 
-        [Required]
-        public string AuthorName { get; set; }
-
-        public Category Category { get; set; }
+        public Artist Author { get; set; }
 
         [Required]
-        public string CategoryId { get; set; }
+        public string AuthorId { get; set; }
+
+        [Required]
+        public string Category { get; set; }
 
         [Required]
         [RegularExpression(DataConstants.Item.ImageUrlRegularExpression)]
