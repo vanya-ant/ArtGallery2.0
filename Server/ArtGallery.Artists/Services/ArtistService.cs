@@ -55,7 +55,6 @@
                 ImageUrl = model.ImageUrl,
                 Category = model.Category.ToString(),
                 Email = model.Email,
-                CategoryId = model.Category.ToString(),
             };
 
             await this.context.AddAsync(artist);
